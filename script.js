@@ -215,6 +215,39 @@
     });
   }
 
+  function setupKineticPanels() {
+    document.querySelectorAll("[data-kinetic-panel]").forEach((panel) => {
+      const steps = Array.from(panel.querySelectorAll("[data-kinetic-step]"));
+      if (!steps.length) return;
+      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      let index = 0;
+      let timer = null;
+
+      function setActive(next) {
+        index = next;
+        steps.forEach((step, i) => step.classList.toggle("is-active", i === index));
+      }
+
+      setActive(0);
+      if (reduced || steps.length < 2) return;
+
+      const observer = new IntersectionObserver((entries) => {
+        const visible = entries.some((entry) => entry.isIntersecting);
+        window.clearInterval(timer);
+        if (!visible || document.hidden) return;
+        timer = window.setInterval(() => setActive((index + 1) % steps.length), 2400);
+      }, { threshold: 0.35 });
+
+      observer.observe(panel);
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+          window.clearInterval(timer);
+          timer = null;
+        }
+      });
+    });
+  }
+
   function setupProof() {
     document.querySelectorAll("[data-proof-strip]").forEach((strip) => {
       const keys = strip.getAttribute("data-proof-strip").split(",");
@@ -313,6 +346,7 @@
   setupReveal();
   setupStateVisuals();
   setupPatientPath();
+  setupKineticPanels();
   setupProof();
   setupStickyCta();
   setupForms();
