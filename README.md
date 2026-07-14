@@ -1,13 +1,13 @@
 # HelpAfterAccident landing test
 
-Static HTML, CSS, and JavaScript prototype with five audience routes:
+Static HTML, CSS, and JavaScript prototype with audience and company routes:
 
 - `index.html`
 - `patients.html`
 - `doctors.html`
 - `lawyers.html`
 - `investors.html`
-- `ambassadors.html`
+- `about.html`
 
 ## Brand assets
 
@@ -22,7 +22,6 @@ Edit `config.js`.
 - `ctas.provider`
 - `ctas.lawyer`
 - `ctas.investor`
-- `ctas.ambassador`
 - `ctas.leadWebhook`
 
 If an audience URL is blank, the CTA scrolls to that page's form. If `leadWebhook` is blank, forms show a development configuration error instead of pretending to submit.

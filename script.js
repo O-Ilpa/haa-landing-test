@@ -13,7 +13,7 @@
     users: '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
     link: '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.1 0l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1"/><path d="M14 11a5 5 0 0 0-7.1 0l-2 2a5 5 0 0 0 7.1 7.1l1.1-1.1"/></svg>',
     repeat: '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m17 2 4 4-4 4"/><path d="M3 11V9a3 3 0 0 1 3-3h15"/><path d="m7 22-4-4 4-4"/><path d="M21 13v2a3 3 0 0 1-3 3H3"/></svg>',
-    share: '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4"/><path d="m15.4 6.5-6.8 4"/></svg>'
+    shield: '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V5l8-3 8 3z"/><path d="m9 12 2 2 4-4"/></svg>'
   };
 
   function sanitize(value) {
@@ -41,7 +41,6 @@
     if (audience === "provider") return icons.clipboard;
     if (audience === "lawyer") return icons.link;
     if (audience === "investor") return icons.repeat;
-    if (audience === "ambassador") return icons.share;
     return icons.route;
   }
 
@@ -195,7 +194,7 @@
             return;
           }
           setState(index + 1);
-        }, 650);
+        }, 1050);
       });
       observer.observe(visual);
       document.addEventListener("visibilitychange", () => {
@@ -242,7 +241,7 @@
           step += 1;
           setActive(Math.min(step, buttons.length - 1));
           if (step >= buttons.length - 1) window.clearInterval(timer);
-        }, 620);
+        }, 950);
       });
       observer.observe(path);
       document.addEventListener("visibilitychange", () => {
@@ -267,10 +266,13 @@
     const heroButton = document.querySelector(".hero .button.primary");
     const final = document.querySelector(".final");
     if (!heroButton || !final || window.matchMedia("(min-width: 861px)").matches) return;
+    if (!heroButton.dataset.cta && !document.getElementById("lead-form")) return;
 
     const sticky = document.createElement("div");
     sticky.className = "sticky-cta";
-    sticky.innerHTML = `<a class="button primary" data-cta="${heroButton.dataset.cta || audienceFromForm()}">${ctaText()}</a>`;
+    const href = heroButton.getAttribute("href") || "#lead-form";
+    const ctaAttr = heroButton.dataset.cta ? ` data-cta="${heroButton.dataset.cta}"` : ` href="${href}"`;
+    sticky.innerHTML = `<a class="button primary"${ctaAttr}>${ctaText()}</a>`;
     document.body.appendChild(sticky);
     addButtonIcons();
     setupCtas();

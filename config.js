@@ -7,7 +7,6 @@ window.HAA_CONFIG = {
     provider: "",
     lawyer: "",
     investor: "",
-    ambassador: "",
     leadWebhook: ""
   },
   legal: {

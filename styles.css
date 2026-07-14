@@ -69,7 +69,7 @@ button, input, select, textarea { font: inherit; }
 }
 .logo { display: inline-flex; align-items: center; min-height: 48px; }
 .logo img {
-  width: 168px;
+  width: 176px;
   max-width: 52vw;
   height: auto;
   display: block;
@@ -235,7 +235,7 @@ h2 {
   position: absolute;
   top: 34px;
   bottom: 34px;
-  right: 22px;
+  right: 32px;
   width: 2px;
   background: var(--line);
 }
@@ -245,7 +245,7 @@ h2 {
   background: white;
   border: 1px solid var(--line);
   border-radius: 15px;
-  padding: 12px 48px 12px 14px;
+  padding: 12px 60px 12px 14px;
   text-align: left;
   font-size: clamp(1.65rem, 8vw, 2.4rem);
   line-height: 1;
@@ -269,10 +269,10 @@ h2 {
   background: var(--accent);
   border-radius: 999px;
   position: absolute;
-  right: 16px;
+  right: 26px;
   top: 22px;
-  box-shadow: 0 0 0 7px rgba(204, 0, 126, .12);
-  transition: transform 680ms var(--ease-out);
+  box-shadow: 0 0 0 5px rgba(204, 0, 126, .12);
+  transition: transform 920ms var(--ease-out);
   z-index: 2;
 }
 
@@ -293,7 +293,7 @@ h2 {
 .state.active {
   border-color: var(--accent);
   box-shadow: inset 4px 0 0 var(--accent), 0 12px 28px rgba(17, 17, 17, .075);
-  transform: translateX(2px);
+  transform: none;
 }
 .state > .icon { color: var(--accent); margin-top: 2px; font-size: 22px; }
 .micro {
@@ -363,6 +363,13 @@ h2 {
   align-items: start;
   border-top: 1px solid var(--line);
   padding-bottom: calc(84px + env(safe-area-inset-bottom));
+}
+.final-simple {
+  align-items: center;
+}
+.plain-cta {
+  display: flex;
+  align-items: center;
 }
 form {
   border: 1px solid var(--line);
@@ -479,7 +486,7 @@ textarea { min-height: 104px; resize: vertical; }
     display: flex;
     justify-self: center;
     flex-direction: row;
-    gap: 18px;
+    gap: 22px;
     padding: 0;
     border: 0;
     box-shadow: none;
@@ -526,11 +533,11 @@ textarea { min-height: 104px; resize: vertical; }
   .word-path { gap: 18px; }
   .word-path button {
     min-height: 88px;
-    padding: 20px 58px 20px 20px;
+    padding: 20px 70px 20px 20px;
     font-size: clamp(2rem, 4vw, 4.2rem);
   }
   .word-path p { font-size: 18px; }
-  .traveler { top: 38px; right: 20px; }
+  .traveler { top: 38px; right: 30px; }
   .steps {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 28px;
