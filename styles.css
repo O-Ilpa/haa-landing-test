@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;900&display=swap");
 
 :root {
   --ink: #111111;
@@ -57,7 +57,6 @@ button, input, select, textarea { font: inherit; }
   left: 0;
   right: 0;
   z-index: 20;
-  border-bottom: 1px solid var(--line);
   background: var(--paper);
   box-shadow: 0 0 0 rgba(17, 17, 17, 0);
   transition: box-shadow 300ms var(--ease-in-out);
@@ -152,11 +151,11 @@ button, input, select, textarea { font: inherit; }
   color: var(--ink);
 }
 .phone-link span {
-  color: var(--accent);
-  font-weight: 900;
+  color: #9a9a9f;
+  font-weight: 400;
 }
 .phone-link strong {
-  color: var(--ink);
+  color: var(--accent);
   font-weight: 900;
 }
 .language-button {
@@ -213,6 +212,15 @@ button, input, select, textarea { font: inherit; }
   border-radius: 10px;
   background: var(--paper);
   color: var(--ink);
+  font-size: 0;
+}
+.menu-button::before {
+  content: "";
+  width: 18px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  box-shadow: 0 -6px 0 currentColor, 0 6px 0 currentColor;
 }
 
 .button {
@@ -246,6 +254,9 @@ main > section {
   margin: 0 auto;
   padding: 72px 20px;
 }
+#how-it-works {
+  margin-top: 100px;
+}
 .hero {
   min-height: calc(100svh - 65px - env(safe-area-inset-top));
   display: grid;
@@ -268,20 +279,97 @@ main > section {
   padding-right: 20px;
 }
 .hero-image-left {
-  align-content: center;
-  gap: 28px;
+  min-height: 880px;
+  align-content: start;
+  justify-items: start;
+  gap: 48px;
+  text-align: left;
 }
 .hero-art {
   order: -1;
   min-width: 0;
+  height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .hero-art img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: contain;
 }
 .hero-copy {
   min-width: 0;
+  display: grid;
+  justify-items: start;
+}
+.hero-kicker {
+  max-width: 38ch;
+  margin: 24px 0 72px;
+  color: var(--muted);
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1.05;
+}
+.hero-copy h1 {
+  font-size: 56px;
+  font-weight: 700;
+  line-height: .86;
+  max-width: none;
+  white-space: nowrap;
+}
+.hero-copy .lead {
+  color: #6e6e73;
+  font-size: 24px;
+}
+.hero-copy .hero-coordinate {
+  color: var(--ink);
+  font-size: 80px;
+  font-weight: 800;
+  line-height: 1.32;
+}
+.hero-copy .hero-coordinate span {
+  display: block;
+}
+.hero-copy .hero-coordinate .accent-word {
+  color: var(--accent);
+}
+.hero-copy .hero-story {
+  color: #555555;
+  font-size: 24px;
+  font-weight: 500;
+  margin-top: 24px;
+}
+.hero-copy .hero-story span {
+  display: block;
+}
+.hero-copy .cta-row {
+  margin-top: 40px;
+}
+.hero-copy .cta-row .button {
+  width: 240px;
+  min-height: 56px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.hero-v2-row {
+  gap: clamp(36px, 6vw, 84px);
+}
+.hero-v2-row .hero-art {
+  width: 100%;
+}
+.hero-v2-row .hero-copy {
+  max-width: 640px;
+}
+.hero-v3-row {
+  gap: clamp(36px, 6vw, 84px);
+}
+.hero-v3-row .hero-art {
+  width: 100%;
+}
+.hero-v3-row .hero-copy {
+  max-width: 640px;
 }
 .eyebrow {
   margin: 0 0 12px;
@@ -706,15 +794,46 @@ textarea { min-height: 104px; resize: vertical; }
     padding-right: max(24px, calc((100vw - var(--max)) / 2 + 24px));
   }
   .hero-image-left {
-    grid-template-columns: minmax(0, 6.5fr) minmax(360px, 5.5fr);
-    gap: clamp(36px, 5vw, 72px);
+    grid-template-columns: minmax(0, 760px);
+    align-content: start;
+    justify-content: start;
+    gap: 48px;
   }
   .hero-image-left .hero-art {
     order: 0;
   }
   .hero-image-left .hero-copy {
-    justify-self: end;
-    max-width: 560px;
+    justify-self: start;
+    max-width: 760px;
+  }
+  .hero-v2-row {
+    grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
+    align-items: center;
+    align-content: center;
+    gap: clamp(48px, 7vw, 96px);
+  }
+  .hero-v2-row .hero-art {
+    order: 0;
+    height: 520px;
+  }
+  .hero-v2-row .hero-copy {
+    justify-self: start;
+    max-width: 640px;
+  }
+  .hero-v3-row {
+    grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
+    align-items: center;
+    align-content: center;
+    gap: clamp(48px, 7vw, 96px);
+  }
+  .hero-v3-row .hero-art {
+    order: 2;
+    height: 520px;
+  }
+  .hero-v3-row .hero-copy {
+    order: 1;
+    justify-self: start;
+    max-width: 640px;
   }
   h1 { font-size: clamp(4.8rem, 7.4vw, 7.5rem); max-width: 12ch; }
   h2 { font-size: clamp(3.6rem, 5vw, 5.4rem); }

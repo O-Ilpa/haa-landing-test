@@ -30,6 +30,7 @@
 
   function addButtonIcons() {
     document.querySelectorAll(".button").forEach((button) => {
+      if (button.hasAttribute("data-no-icon")) return;
       if (button.dataset.iconified) return;
       button.insertAdjacentHTML("beforeend", icons.arrow);
       button.dataset.iconified = "true";
