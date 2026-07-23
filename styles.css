@@ -258,6 +258,22 @@ main > section {
   padding-left: 20px;
   padding-right: 20px;
 }
+.hero-image-left {
+  align-content: center;
+  gap: 28px;
+}
+.hero-art {
+  order: -1;
+  min-width: 0;
+}
+.hero-art img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.hero-copy {
+  min-width: 0;
+}
 .eyebrow {
   margin: 0 0 12px;
   color: var(--muted);
@@ -679,6 +695,17 @@ textarea { min-height: 104px; resize: vertical; }
   .hero.dark {
     padding-left: max(24px, calc((100vw - var(--max)) / 2 + 24px));
     padding-right: max(24px, calc((100vw - var(--max)) / 2 + 24px));
+  }
+  .hero-image-left {
+    grid-template-columns: minmax(0, 6.5fr) minmax(360px, 5.5fr);
+    gap: clamp(36px, 5vw, 72px);
+  }
+  .hero-image-left .hero-art {
+    order: 0;
+  }
+  .hero-image-left .hero-copy {
+    justify-self: end;
+    max-width: 560px;
   }
   h1 { font-size: clamp(4.8rem, 7.4vw, 7.5rem); max-width: 12ch; }
   h2 { font-size: clamp(3.6rem, 5vw, 5.4rem); }
