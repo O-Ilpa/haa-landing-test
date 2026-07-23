@@ -53,7 +53,7 @@
       }
     });
     document.querySelectorAll(".step-number").forEach((step, index) => {
-      if (!step.dataset.iconified) {
+      if (!step.dataset.iconified && !document.body.classList.contains("index-v3")) {
         const icon = index === 0 ? pageIcon() : index === 1 ? icons.users : icons.check;
         step.innerHTML = icon;
         step.dataset.iconified = "true";
@@ -262,6 +262,7 @@
   }
 
   function setupStickyCta() {
+    if (document.body.classList.contains("index-v3")) return;
     const heroButton = document.querySelector(".hero .button.primary");
     const final = document.querySelector(".final");
     if (!heroButton || !final || window.matchMedia("(min-width: 861px)").matches) return;
